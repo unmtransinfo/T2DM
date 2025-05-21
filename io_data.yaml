@@ -1,0 +1,80 @@
+input_files:
+  # list of input files for the package
+  diab1_codes_file: "IOData/diabetes1_concept_codes.tsv.gz"
+  diab2_codes_file: "IOData/diabetes2_concept_codes.tsv.gz"
+  concepts_file: "IOData/concepts.tsv.gz"
+  person_data_file: "IOData/diabetes_person_data.tsv.gz"
+  person_condition_file: "IOData/diabetes_person_conditions_data.tsv.gz"
+  person_drug_file: "IOData/diabetes_person_drugs_data.tsv.gz"
+  person_observation_file: "IOData/diabetes_person_observation_data.tsv.gz"
+  person_procedure_file: "IOData/diabetes_person_procedures_data.tsv.gz"
+
+output_files:
+  # output files - pickle files - before: before 1st diagnosis, all: even after diagnosis
+  person_diab_date_file: "IOData/pklFiles/person_diab_date_dict.pkl"
+  person_obs_date_file: "IOData/pklFiles/person_obs_date_dict.pkl"
+  person_data_file: "IOData/pklFiles/person_data_dict.pkl"
+  person_cond_file: "IOData/pklFiles/person_all_cond_dict.pkl"
+  person_drug_file: "IOData/pklFiles/person_all_drug_dict.pkl"
+  person_proc_file: "IOData/pklFiles/person_proc_dict.pkl"
+  excluded_person_file: "IOData/pklFiles/excluded_persons.pkl"
+
+  # output files for ML data
+  features_file: "IOData/MLData/features.pkl"
+  labels_file: "IOData/MLData/labels.pkl"
+  persons_file: "IOData/MLData/persons.pkl"
+  covars_file: "IOData/MLData/covariates.pkl"
+
+  # output files for ML data -- covars before diagnosis
+  b4_features_file: "IOData/MLData_before/features.pkl"
+  b4_labels_file: "IOData/MLData_before/labels.pkl"
+  b4_persons_file: "IOData/MLData_before/persons.pkl"
+  b4_covars_file: "IOData/MLData_before/covariates.pkl"
+
+  # results
+  imp_features_file: "IOData/results/imp_features.tsv"
+  imp_features_pkl_file: "IOData/results/imp_features.pkl"
+  posterior_file: "IOData/results/posterior_unlab.tsv"
+  coded_patients_posterior_file: "IOData/results/coded_patients_posterior.pkl"
+  uncoded_patients_posterior_file: "IOData/results/uncoded_patients_posterior.pkl"
+  test_patients_posterior_file: "IOData/results/test_patients_posterior.pkl"
+  chart_review_file: "IOData/results/chart_review_data.tsv"
+
+  # for web portal
+  imp_covar_coeff_likelihood: "IOData/results/covars_coeff_likelihood.pkl"
+  concept_id_name_file: "IOData/results/concept_id_name_dict.pkl"
+
+plot_files:
+  state_plot_dict: "IOData/plots/state_diab_data.pkl"
+  age_plot_dict: "IOData/plots/age_diab_data.pkl"
+  sex_plot_dict: "IOData/plots/sex_diab_data.pkl"
+  diab_us_map_file: "IOData/plots/diab_us_map.png"
+  diab_age_file: "IOData/plots/diab_age_group.png"
+  jacc_plot_file: "IOData/plots/jaccard_plot.png"
+
+nmf_vars:
+  min_feature_count: 5
+  test_size: 0.01
+  rseed_val: 123
+  n_clusters: 9
+  n_iterations: 20
+  min_feature_coeff: 0
+
+icd9_diab_codes: [44824071, 44824072, 44824073, 44824074, 44830221, 44819498, 44819499, 44819500, 44819501, 44819502,
+                  44819503, 44819504, 44836911, 44836912, 44836913, 44836914, 44836915, 44836916, 44836917, 44836918,
+                  44820047, 44822099, 44833364, 44833365, 44833366, 44833367, 44833368, 44821617, 44828788, 44828789,
+                  44828790, 44828791, 44828792, 44828793, 44828794, 44828795, 44823192, 44825262, 44825263, 44825264,
+                  44829876, 44829877, 44829878, 44829879, 44829880, 44829881, 44829882, 44820680, 44820681, 44820682,
+                  44820683, 44820684, 44820685, 44834547, 44834548, 44834549, 44823798, 44836084, 44825349, 44832532,
+                  44832533, 44821785, 44821786, 44821787, 44831044, 44831045, 44831046, 44831047, 44826459, 44826460,
+                  44826461, 44837245, 44822932, 44822933, 44822934, 44822935, 44822936, 44829590, 44822938, 44835747,
+                  44835748, 44835749, 44835750, 44835751, 44832187, 44832188, 44832189, 44832190, 44832191, 44832192,
+                  44832193, 44832194, 44827615, 44827616, 44827617]
+
+diab_imp_features:  [35207170, 1501700, 35207173, 45597199, 35206695, 1308216, 1395773, 1503297, 45587018, 35209291, 45562457, 35206757,
+                     1560171, 35209324, 45548653, 35206766, 35207793, 35206266, 1301125, 45537931, 45547667, 1512446, 35211420, 45552285,
+                     1518254, 35206332, 45595836, 1332418, 35206858, 1580747, 35206859, 45534422, 37201113, 1545958, 45562095, 45534458,
+                     45600511, 35208968, 35208969, 35206936, 45557016, 45587225, 35206940, 35207455, 35207458, 45577516, 1597756, 35225404,
+                     1539403, 35206992, 974166, 35208025, 45557089, 45592429, 35207024, 45600659, 35207062, 45557144, 35207065, 45534105,
+                     45552539, 1510813, 45543839, 45774751, 1307046, 35207081, 37200312, 35207097, 1551803, 35207100, 1367500, 45586894,
+                     45561817, 1593331, 35207155, 35207668, 35207671, 35206139, 35206141, 35208190]
